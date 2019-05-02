@@ -1,5 +1,5 @@
 import * as firebase from 'firebase';
-import expenses from '../tests/fixtures/expenses';
+// import expenses from '../tests/fixtures/expenses';
 
 const config = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -12,39 +12,11 @@ const config = {
 
 firebase.initializeApp(config);
 const database = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, database as default };
-
-// database.ref('expenses').on('child_removed', (snapshot) => {
-//   console.log(snapshot.key, snapshot.val());
-// })
-
-// database.ref('expenses').on('child_changed', (snapshot) => {
-//   console.log(snapshot.key, snapshot.val());
-// })
-
-// database.ref('expenses').push(expenses[0]);
-
-// database.ref('expenses').on('child_added', (snapshot) => {
-//   console.log(snapshot.key, snapshot.val());
-// })
-
-// const onValueChange = database.ref().on('value', (snapshot) => {
-//   console.log(`${snapshot.val().name} is a ${snapshot.val().job.title} at ${snapshot.val().job.company}.`);
-// }, (e) => {
-//   console.log('data fetching failed: ' + e)
-// });
-
-// setTimeout(() => {
-//   database.ref('job/company').set('Amazon');
-// }, 3500);
+export { firebase, googleAuthProvider, database as default };
 
 
-
-// database.ref('notes').push({
-//   title: 'Course Topics',
-//   body: 'React Native, Python'
-// });
 
 
 

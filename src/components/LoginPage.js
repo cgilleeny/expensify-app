@@ -1,19 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { startLogin } from '../actions/auth';
 
-const LoginPage = (props) => (
+export const LoginPage = ({ startLogin }) => (
   <div>
-  <form onSubmit={(e) => {
-    e.preventDefault();
-    props.history.push('/dashboard');
-  }}>
-    <input type="text" 
-          placeholder="id" 
-          autoFocus />
-    <input type="text" 
-          placeholder="password" />
-    <button>Login</button>
-  </form>
+  <button onClick={startLogin}>Login</button>
   </div>
 );
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => ({
+  startLogin: () => dispatch(startLogin())
+});
+
+export default connect(undefined, mapDispatchToProps)(LoginPage);
